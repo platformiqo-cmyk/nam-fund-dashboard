@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainLayout from "./components/MainLayout";
+import DashboardPage from "./pages/DashboardPage";
+import InvestmentsPage from "./pages/InvestmentsPage";
+import PortfolioPage from "./pages/PortfolioPage";
+import ReportsPage from "./pages/ReportsPage";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* Layout chính */}
+        <Route path="/" element={<MainLayout />}>
+          {/* Các trang con */}
+          <Route index element={<DashboardPage />} />
+          <Route path="investments" element={<InvestmentsPage />} />
+          <Route path="portfolio" element={<PortfolioPage />} />
+          <Route path="reports" element={<ReportsPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
